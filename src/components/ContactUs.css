@@ -1,0 +1,77 @@
+.contact-us-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #333;
+}
+
+.contact-us-container h1 {
+  color: #1a237e;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.contact-us-container .intro {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #555;
+}
+
+.contact-section {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h2 {
+  color: #1a237e;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.contact-section p {
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.contact-section strong {
+  color: #1a237e;
+}
+
+.response-time {
+  font-style: italic;
+  color: #666;
+  margin-top: 1rem;
+}
+
+.faq-link {
+  color: #1a237e;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.faq-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .contact-us-container {
+    padding: 1rem;
+  }
+
+  .contact-section {
+    padding: 1.5rem;
+  }
+
+  .contact-us-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .contact-section h2 {
+    font-size: 1.2rem;
+  }
+} 

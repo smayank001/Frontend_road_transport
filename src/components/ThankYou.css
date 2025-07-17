@@ -1,0 +1,120 @@
+.thank-you-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thank-you-content {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.thank-you-content h1 {
+  font-size: 3rem;
+  color: #1a237e;
+  margin-bottom: 2rem;
+}
+
+.success-message {
+  background-color: #e8f5e9;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+}
+
+.checkmark {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.success-message h2 {
+  color: #2e7d32;
+  margin-bottom: 1rem;
+}
+
+.success-message p {
+  color: #1b5e20;
+  margin-bottom: 0.5rem;
+}
+
+.booking-id {
+  font-weight: bold;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background-color: #c8e6c9;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.partner-logos {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.partner-logos img {
+  height: 40px;
+  object-fit: contain;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #1a237e;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.contact-info {
+  margin-top: 2rem;
+}
+
+.contact-info h3 {
+  color: #1a237e;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info p {
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .thank-you-container {
+    padding: 1rem;
+  }
+
+  .thank-you-content h1 {
+    font-size: 2rem;
+  }
+
+  .partner-logos {
+    gap: 1rem;
+  }
+
+  .partner-logos img {
+    height: 30px;
+  }
+
+  .footer-links {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+} 

@@ -1,0 +1,111 @@
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.ministry-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 1rem;
+}
+
+.road-image {
+  max-width: 60%;
+  height: auto;
+  object-fit: cover;
+  border-left: 2px solid #000;   /* left border */
+  border-right: 2px solid #000;  /* right border */
+  border-top: none;
+  border-bottom: none;
+  border-radius: 10px;           /* optional rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* subtle shadow */
+}
+
+
+.ministry-logo {
+  width: 120px;
+  margin-bottom: 1rem;
+}
+
+.ministry-header h1 {
+  color: #1a237e;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.booking-options {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.booking-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.booking-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  padding: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.booking-card:hover {
+  transform: translateY(-5px);
+}
+
+.booking-card h2 {
+  font-size: 1.2rem;
+  margin: 0 0 1.5rem 0;
+  color: #333;
+}
+
+.yellow {
+  background-color: #ffd700;
+}
+
+.blue {
+  background-color: #4169e1;
+  color: white;
+}
+
+.blue h2 {
+  color: white;
+}
+
+.cyan {
+  background-color: #00bcd4;
+  color: white;
+}
+
+.cyan h2 {
+  color: white;
+}
+
+.book-button {
+  background-color: white;
+  color: #333;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none; 
+}
+
+
+.book-button:hover {
+  background-color: #f0f0f0;
+} 

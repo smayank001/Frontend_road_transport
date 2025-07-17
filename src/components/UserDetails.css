@@ -1,0 +1,103 @@
+.user-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.booking-progress {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  gap: 2rem;
+}
+
+.step {
+  padding: 1rem 2rem;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  color: #666;
+  position: relative;
+}
+
+.step.active {
+  background-color: #1a237e;
+  color: white;
+}
+
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 2px;
+  background-color: #666;
+}
+
+.user-form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-form-container h2 {
+  color: #1a237e;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #1a237e;
+}
+
+.next-button {
+  background-color: #1a237e;
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+}
+
+.next-button:hover {
+  background-color: #0d1757;
+} 

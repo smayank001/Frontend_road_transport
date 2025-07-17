@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DuckDB React Example</title>
+    <!-- Add DuckDB WASM CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.28.0/dist/duckdb-browser.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+      }
+
+      #root {
+        min-height: 100vh;
+      }
+
+      /* Fallback content styles */
+      #fallback-content {
+        display: none;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .dashboard {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .button-container {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+
+      .results {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 4px;
+        margin-top: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+
+      th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f4f6f8;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Fallback content in case React fails to load -->
+    <div id="fallback-content">
+      <h1>DuckDB Demo Dashboard</h1>
+      
+      <div class="dashboard">
+        <h2>User Statistics</h2>
+        <div class="button-container">
+          <button onclick="getUserStats()">Get User Stats</button>
+        </div>
+        <div id="user-stats-results" class="results"></div>
+      </div>
+
+      <div class="dashboard">
+        <h2>Product Information</h2>
+        <div class="button-container">
+          <button onclick="getProductData()">Get Product Data</button>
+        </div>
+        <div id="product-data-results" class="results"></div>
+      </div>
+    </div>
+
+    <script>
+      // Check if React app is loaded
+      setTimeout(() => {
+        const rootContent = document.getElementById('root').children.length;
+        if (!rootContent) {
+          document.getElementById('fallback-content').style.display = 'block';
+          initializeDuckDB();
+        }
+      }, 2000);
+
+      let db = null;
+
+      async function initializeDuckDB() {
+        try {
+          // Initialize DuckDB with correct paths
+          const DUCKDB_BUNDLES = {
+            mvp: {
+              mainModule: '/duckdb/duckdb-mvp.wasm',
+              mainWorker: '/duckdb/duckdb-browser-mvp.worker.js',
+            },
+          };
+
+          const bundle = await duckdb.selectBundle(DUCKDB_BUNDLES);
+          const worker = new Worker(bundle.mainWorker);
+          const logger = new duckdb.ConsoleLogger();
+          db = new duckdb.AsyncDuckDB(logger, worker);
+          await db.instantiate(bundle.mainModule);
+
+          // Initialize sample data
+          const conn = await db.connect();
+          
+          // Create users table
+          await conn.query(`
+            CREATE TABLE users (
+              id INTEGER,
+              name VARCHAR,
+              email VARCHAR,
+              join_date DATE
+            )
+          `);
+          
+          await conn.query(`
+            INSERT INTO users VALUES
+            (1, 'John Doe', 'john@example.com', '2024-01-01'),
+            (2, 'Jane Smith', 'jane@example.com', '2024-02-01'),
+            (3, 'Bob Wilson', 'bob@example.com', '2024-03-01')
+          `);
+
+          // Create products table
+          await conn.query(`
+            CREATE TABLE products (
+              id INTEGER,
+              name VARCHAR,
+              price DECIMAL(10,2),
+              stock INTEGER
+            )
+          `);
+
+          await conn.query(`
+            INSERT INTO products VALUES
+            (1, 'Laptop', 999.99, 50),
+            (2, 'Smartphone', 699.99, 100),
+            (3, 'Headphones', 149.99, 200)
+          `);
+
+          await conn.close();
+          console.log('DuckDB initialized with sample data!');
+        } catch (error) {
+          console.error('Failed to initialize DuckDB:', error);
+          document.getElementById('user-stats-results').innerHTML = 
+            '<div style="color: red;">Failed to initialize database</div>';
+        }
+      }
+
+      async function getUserStats() {
+        if (!db) return;
+        try {
+          const conn = await db.connect();
+          const result = await conn.query(`
+            SELECT 
+              COUNT(*) as total_users,
+              MIN(join_date) as earliest_join,
+              MAX(join_date) as latest_join
+            FROM users
+          `);
+          const data = result.toArray()[0];
+          
+          document.getElementById('user-stats-results').innerHTML = `
+            <ul style="list-style: none; padding: 0;">
+              <li>Total Users: ${data.total_users}</li>
+              <li>Earliest Join: ${new Date(data.earliest_join).toLocaleDateString()}</li>
+              <li>Latest Join: ${new Date(data.latest_join).toLocaleDateString()}</li>
+            </ul>
+          `;
+          
+          await conn.close();
+        } catch (error) {
+          console.error('Error fetching user stats:', error);
+          document.getElementById('user-stats-results').innerHTML = 
+            '<div style="color: red;">Failed to fetch user statistics</div>';
+        }
+      }
+
+      async function getProductData() {
+        if (!db) return;
+        try {
+          const conn = await db.connect();
+          const result = await conn.query(`
+            SELECT 
+              name,
+              price,
+              stock,
+              price * stock as total_value
+            FROM products
+            ORDER BY total_value DESC
+          `);
+          const data = result.toArray();
+          
+          const tableRows = data.map(product => `
+            <tr>
+              <td>${product.name}</td>
+              <td>$${product.price.toFixed(2)}</td>
+              <td>${product.stock}</td>
+              <td>$${product.total_value.toFixed(2)}</td>
+            </tr>
+          `).join('');
+
+          document.getElementById('product-data-results').innerHTML = `
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Total Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${tableRows}
+              </tbody>
+            </table>
+          `;
+          
+          await conn.close();
+        } catch (error) {
+          console.error('Error fetching product data:', error);
+          document.getElementById('product-data-results').innerHTML = 
+            '<div style="color: red;">Failed to fetch product data</div>';
+        }
+      }
+    </script>
+  </body>
+</html>

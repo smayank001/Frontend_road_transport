@@ -1,0 +1,86 @@
+.track-order-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #333;
+}
+
+.track-order-container h1 {
+  color: #1a237e;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.track-order-container .intro {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #555;
+}
+
+.tracking-instructions,
+.what-to-expect,
+.need-help {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.track-order-container h2 {
+  color: #1a237e;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.track-order-container ol,
+.track-order-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.track-order-container li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.track-order-container strong {
+  color: #1a237e;
+}
+
+.track-order-container a {
+  color: #1a237e;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.track-order-container a:hover {
+  text-decoration: underline;
+}
+
+.need-help p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .track-order-container {
+    padding: 1rem;
+  }
+
+  .tracking-instructions,
+  .what-to-expect,
+  .need-help {
+    padding: 1.5rem;
+  }
+
+  .track-order-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .track-order-container h2 {
+    font-size: 1.2rem;
+  }
+} 

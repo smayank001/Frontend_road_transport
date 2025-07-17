@@ -1,0 +1,148 @@
+.payment-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.booking-progress {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  gap: 2rem;
+}
+
+.step {
+  padding: 1rem 2rem;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  color: #666;
+  position: relative;
+}
+
+.step.active {
+  background-color: #1a237e;
+  color: white;
+}
+
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 2px;
+  background-color: #666;
+}
+
+.payment-details {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.payment-details h2 {
+  color: #1a237e;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.price-breakdown {
+  margin: 2rem 0;
+}
+
+.price-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  gap: 1rem;
+}
+
+.price-item:last-child {
+  border-bottom: none;
+}
+
+.price-item span:first-child {
+  font-weight: 500;
+  color: #333;
+}
+
+.price-item small {
+  display: block;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.price-item.total {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #1a237e;
+  border-top: 2px solid #eee;
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.qr-code-section {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.qr-code {
+  max-width: 300px;
+  margin: 1rem auto;
+}
+
+.qr-code-section p {
+  color: #666;
+  margin-top: 1rem;
+}
+
+.transaction-form {
+  margin-top: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-group input[type="file"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.submit-button {
+  background-color: #1a237e;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #0d1757;
+}
+
+.submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+} 

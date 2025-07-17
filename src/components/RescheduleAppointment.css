@@ -1,0 +1,114 @@
+.reschedule-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.reschedule-container h1 {
+  color: #1a237e;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.intro-text {
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.steps-section,
+.policies-section,
+.assistance-section {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.steps-section h2,
+.policies-section h2,
+.assistance-section h2 {
+  color: #1a237e;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.step {
+  margin-bottom: 2rem;
+}
+
+.step:last-child {
+  margin-bottom: 0;
+}
+
+.step h3 {
+  color: #1a237e;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.step ul,
+.policies-section ul,
+.assistance-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.step li,
+.policies-section li,
+.assistance-section li {
+  margin-bottom: 0.8rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.step li strong,
+.policies-section li strong,
+.assistance-section li strong {
+  color: #1a237e;
+  margin-right: 0.5rem;
+}
+
+.step p {
+  color: #333;
+  line-height: 1.6;
+}
+
+.assistance-section p {
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .reschedule-container {
+    padding: 1rem;
+  }
+
+  .reschedule-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .steps-section,
+  .policies-section,
+  .assistance-section {
+    padding: 1.5rem;
+  }
+
+  .steps-section h2,
+  .policies-section h2,
+  .assistance-section h2 {
+    font-size: 1.3rem;
+  }
+
+  .step h3 {
+    font-size: 1.1rem;
+  }
+} 
