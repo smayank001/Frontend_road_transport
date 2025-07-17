@@ -39,7 +39,7 @@ const UserDetails = () => {
 
     try {
       const response = await fetch(
-        "@https://backend-road-transport.onrender.com /api/user-details",
+        "https://backend-road-transport.onrender.com /api/user-details",
         {
           method: "POST",
           headers: {

@@ -39,5 +39,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "@https://backend-road-transport.onrender.com "
+  "proxy": "https://backend-road-transport.onrender.com"
 }
