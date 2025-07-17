@@ -24,7 +24,7 @@ const Payment = () => {
 
       // Save payment details
       const response = await fetch(
-        "http://localhost:5050/api/payment-details",
+        "@https://backend-road-transport.onrender.com /api/payment-details",
         {
           method: "POST",
           body: formData,

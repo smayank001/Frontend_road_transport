@@ -38,16 +38,19 @@ const UserDetails = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5050/api/user-details", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          bookingId,
-        }),
-      });
+      const response = await fetch(
+        "@https://backend-road-transport.onrender.com /api/user-details",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...formData,
+            bookingId,
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to save user details");

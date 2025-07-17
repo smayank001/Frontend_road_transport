@@ -25,7 +25,7 @@ const BookingDetails = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5050/api/booking-details",
+        "@https://backend-road-transport.onrender.com /api/booking-details",
         {
           method: "POST",
           headers: {
