@@ -79,27 +79,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- Fallback content in case React fails to load -->
-    <div id="fallback-content">
-      <h1>DuckDB Demo Dashboard</h1>
-      
-      <div class="dashboard">
-        <h2>User Statistics</h2>
-        <div class="button-container">
-          <button onclick="getUserStats()">Get User Stats</button>
-        </div>
-        <div id="user-stats-results" class="results"></div>
-      </div>
-
-      <div class="dashboard">
-        <h2>Product Information</h2>
-        <div class="button-container">
-          <button onclick="getProductData()">Get Product Data</button>
-        </div>
-        <div id="product-data-results" class="results"></div>
-      </div>
-    </div>
-
     <script>
       // Check if React app is loaded
       setTimeout(() => {
