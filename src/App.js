@@ -1,5 +1,5 @@
-import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 import "./App.css";
 import HomePage from "./components/HomePage";
 import BookingDetails from "./components/BookingDetails";
@@ -17,19 +17,95 @@ import TrackOrder from "./components/TrackOrder";
 import Footer from "./components/Footer";
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Handle body scroll lock
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add("menu-open");
+    } else {
+      document.body.classList.remove("menu-open");
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.classList.remove("menu-open");
+    };
+  }, [isMenuOpen]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="App">
       <header>
-        <nav>
-          <Link to="/">
+        <nav className="navbar">
+          <Link to="/" className="nav-logo" onClick={closeMenu}>
             <img src="hsrp.png" alt="HSRP-PLATE" className="logo" />
           </Link>
-          <div className="nav-links">
-            <Link to="/">Home</Link>
-            <Link to="/privacy-policy">Privacy Policy</Link>
-            <Link to="/contact-us">Contact us</Link>
-            <Link to="/home-installation">Home Installation</Link>
-            <Link to="/track-order">Track Your Order</Link>
+
+          <button
+            className="hamburger"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`hamburger-line ${isMenuOpen ? "open" : ""}`}
+            ></span>
+            <span
+              className={`hamburger-line ${isMenuOpen ? "open" : ""}`}
+            ></span>
+            <span
+              className={`hamburger-line ${isMenuOpen ? "open" : ""}`}
+            ></span>
+          </button>
+
+          <div className={`nav-links ${isMenuOpen ? "active" : ""}`}>
+            <Link
+              to="/"
+              className={location.pathname === "/" ? "active" : ""}
+              onClick={closeMenu}
+            >
+              Home
+            </Link>
+            <Link
+              to="/privacy-policy"
+              className={
+                location.pathname === "/privacy-policy" ? "active" : ""
+              }
+              onClick={closeMenu}
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              to="/contact-us"
+              className={location.pathname === "/contact-us" ? "active" : ""}
+              onClick={closeMenu}
+            >
+              Contact us
+            </Link>
+            <Link
+              to="/home-installation"
+              className={
+                location.pathname === "/home-installation" ? "active" : ""
+              }
+              onClick={closeMenu}
+            >
+              Home Installation
+            </Link>
+            <Link
+              to="/track-order"
+              className={location.pathname === "/track-order" ? "active" : ""}
+              onClick={closeMenu}
+            >
+              Track Your Order
+            </Link>
           </div>
         </nav>
       </header>
